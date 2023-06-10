@@ -10,19 +10,19 @@ pipeline {
         stage('dev') {
             steps {
                 echo 'hello dev stage'
-                build 'tomcat-docker' sleep 5'
+                build quietPeriod: 5, job: 'tomcat-docker'
             }
         }       
          stage('prod') {
             steps {
                 echo 'hello prod stage'
-                build 'tomcat-linux' sleep 5'       
+                build quietPeriod: 5, job: 'tomcat-linux'       
             }
          }      
         stage('non-prod') {
             steps {
                 echo 'hello non-prod stage'
-                build 'tomcat-aws' sleep 5' 
+                build quietPeriod: 5, job: 'tomcat-aws'
             }
         }
                 
