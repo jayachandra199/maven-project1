@@ -1,0 +1,31 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Hello') {
+            steps {
+                echo 'Hello World'
+            }
+        }
+        stage('dev') {
+            steps {
+                echo 'hello dev stage'
+                build 'tomcat-docker' sleep 5'
+            }
+        }       
+         stage('prod') {
+            steps {
+                echo 'hello prod stage'
+                build 'tomcat-linux' sleep 5'       
+            }
+         }      
+        stage('non-prod') {
+            steps {
+                echo 'hello non-prod stage'
+                build 'tomcat-aws' sleep 5' 
+            }
+        }
+                
+    }
+}
+
